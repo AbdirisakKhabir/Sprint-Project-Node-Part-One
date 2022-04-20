@@ -1,7 +1,9 @@
 // 1. Create a middleware function that will check if a movie's release date is older than 2000. If it is, return the message "We only accept movies after 2000".
 function validate_movie(req, res, next){
     const release = req.body.release_date;
-    if(release < 2000){
+    const usingSplit = release.split(' ');
+    
+    if(usingSplit[2] < "2000"){
         return res.status(400).json({ message: 'We only accept movies after 2000' });
     }
     next()
